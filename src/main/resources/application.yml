@@ -1,1 +1,20 @@
-spring.application.name=rag-app-lab
+spring:
+  data:
+    mongodb:
+      uri: mongodb://wikiuser:password@localhost:27017/admin
+      database: wiki
+  ai:
+    vectorstore:
+      mongodb:
+        collection-name: vector_store
+        initialize-schema: true
+        path-name: embedding
+        indexName: vector_index
+    openai:
+      api-key: ${OPENAI_API_KEY:anything}
+      chat:
+        options:
+          model: gpt-3.5-turbo
+
+         # docker run -dp 3040:3040 --name turbo3.5 pawanosman/chatgpt:latest
+          # docker logs --follow turbo3.5
